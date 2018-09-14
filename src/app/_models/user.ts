@@ -1,7 +1,9 @@
 export class User {
-    id: number;
-    username: string;
-    password: string;
-    firstName: string;
-    lastName: string;
+    USER_ID: number;
+    USER_CODE: string;
+    FIRST_NAME: string;
+    LAST_NAME: string;
+    FULL_NAME: string;
+    USER_NAME: string;
+    PASSWORD: string;
 }

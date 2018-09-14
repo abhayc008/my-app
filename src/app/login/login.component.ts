@@ -14,13 +14,14 @@ import { AuthenticationService } from '../_services/authentication.service';
 export class LoginComponent implements OnInit {
 
 //   loginForm: FormGroup;
+public myForm: FormGroup;
   loading = false;
   submitted = false;
   returnUrl: string;
   error = '';
 
   constructor( 
-    //private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService) { }
@@ -32,6 +33,13 @@ export class LoginComponent implements OnInit {
 
       // get return url from route parameters or default to '/'
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+      this.myForm = this.formBuilder.group({
+        nested: this.formBuilder.group({
+          username: ['', Validators.required]
+        }),
+        username: ['', Validators.required],
+      });
         
     }
 
@@ -39,9 +47,6 @@ export class LoginComponent implements OnInit {
     password : string
 
   login() :  void {
-
-        
-    if('test' == 'test'){
 
         this.authenticationService.login(this.username, this.password)
             .pipe(first())
@@ -51,13 +56,11 @@ export class LoginComponent implements OnInit {
                    this.router.navigate(['/nav']);
                 },
                 error => {
+                  debugger;
                     this.error = error;
                     this.loading = false;
                     alert(JSON.stringify(this.error));
-                });     
-    }else {
-      alert("Invalid credentials");
-    }
+                });  
   }
 
 //   ngOnInit() {

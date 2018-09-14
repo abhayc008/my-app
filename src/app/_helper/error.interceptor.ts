@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpRequest,HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
-import { observable, throwError, Observable } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { AuthenticationService } from '../_services/authentication.service';
 
+@Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
     constructor( private authenticationService : AuthenticationService){}
@@ -17,7 +18,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                     this.authenticationService.logout();
                     location.reload(true);
             }
-
+                
             const error = err.error.message || err.statusText;
             return throwError(error);
         }
