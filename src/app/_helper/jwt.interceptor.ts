@@ -7,10 +7,9 @@ export class JwtInterceptor implements HttpInterceptor  {
     intercept(request : HttpRequest<any>, next:HttpHandler):Observable<HttpEvent<any>>{
         
         
-    //     request = request.clone({
-    //         setHeaders :{ Access-Control-Allow-Origin : '*' }   
-    //    });
-    //      }
+        request = request.clone({
+            setHeaders :{ 'Content-Type':  'application/json' }   
+       });
     
     //const clonedReq = request.clone({headers: request.headers.set('Access-Control-Allow-Origin', '*')});
         

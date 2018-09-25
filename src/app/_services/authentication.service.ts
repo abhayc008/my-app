@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { RequestOptions, Headers} from '@angular/http';
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -21,7 +22,7 @@ export class AuthenticationService {
 
   login(username: string, password: string) {
 
-    return this.http.post<any>('http://localhost:57249/api/User/authenticate?UserName=test&Password=test',null)
+    return this.http.post<any>( environment.BASE_API_URL +'api/User/authenticate?UserName=test&Password=test',null)
         .pipe(map(user => {
 
             debugger;
@@ -32,7 +33,7 @@ export class AuthenticationService {
             }
               
             return user;
-        }));
+        })) ;
   }
 
 logout(){ 

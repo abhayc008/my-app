@@ -1,3 +1,5 @@
+
+
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,6 +27,8 @@ import { NavComponent } from './nav/nav.component';
 import {fakeBackendProvider} from './_helper/fake-backend';
 import { JwtInterceptor } from './_helper/jwt.interceptor';
 import {ErrorInterceptor} from './_helper/error.interceptor';
+import { NewLoginComponent } from './new-login/new-login.component';
+import { CasecadedropdownComponent } from './casecadedropdown/casecadedropdown.component';
 
 @NgModule({
   imports: [
@@ -67,7 +71,9 @@ import {ErrorInterceptor} from './_helper/error.interceptor';
     HeroSearchComponent,
     LoginComponent,
     TableExampleComponent,
-    NavComponent    
+    NavComponent,
+    NewLoginComponent,
+    CasecadedropdownComponent    
   ],
   providers:[
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

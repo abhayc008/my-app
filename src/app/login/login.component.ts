@@ -1,7 +1,8 @@
 import { Component, NgModule , OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder,FormsModule, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { first, filter, subscribeOn } from 'rxjs/operators';
+
 
 import { AuthenticationService } from '../_services/authentication.service';
 
@@ -53,7 +54,7 @@ public myForm: FormGroup;
             .subscribe(
                 data => {
                    // this.router.navigate([this.returnUrl]);
-                   this.router.navigate(['/nav']);
+                   this.router.navigate(['/dashboard']);
                 },
                 error => {
                   debugger;
