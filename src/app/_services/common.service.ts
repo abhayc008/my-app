@@ -17,15 +17,14 @@ export class CommonService {
 
   GetStates(COUNTRY_ID:number){
     return this.http.get<any>( environment.BASE_API_URL +'api/Common/GetStates?COUNTRY_ID='+ COUNTRY_ID )
-    .pipe(map(countries => {
-          debugger;
+    .pipe(map(countries => {          
       return countries;
          
       })) ;
   };
 
   GetCities(STATE_ID:number){
-    return this.http.get<any>( environment.BASE_API_URL +'api/Common/GetCities?=STATE_ID='+STATE_ID );
+    return this.http.get<any>( environment.BASE_API_URL +'api/Common/GetCities?STATE_ID='+STATE_ID );
   };
 
 

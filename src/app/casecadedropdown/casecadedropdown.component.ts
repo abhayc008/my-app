@@ -37,10 +37,9 @@ export class CasecadedropdownComponent implements OnInit {
 
       this.commonService.GetStates(country_id).subscribe(
         resp => {
-          debugger;
           if(resp.STATUS)
           {
-            this.states = resp as State[]
+            this.states = resp.DATA as State[];
           }
           else
           {
@@ -59,7 +58,7 @@ export class CasecadedropdownComponent implements OnInit {
           resp => {
             if(resp.STATUS)
             {
-              this.cities = resp as City[]
+              this.cities = resp.DATA as City[];
             }
             else
             {

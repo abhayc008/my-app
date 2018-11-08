@@ -1,13 +1,11 @@
-
-
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule,ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS }    from '@angular/common/http';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './_services/in-memory-data.service';
+//import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+//import { InMemoryDataService }  from './_services/in-memory-data.service';
 
 import { AppRoutingModule }     from './app-routing.module';
 
@@ -24,11 +22,16 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { TableExampleComponent } from './table-example/table-example.component';
 import { NavComponent } from './nav/nav.component';
 
-import {fakeBackendProvider} from './_helper/fake-backend';
+//import {fakeBackendProvider} from './_helper/fake-backend';
 import { JwtInterceptor } from './_helper/jwt.interceptor';
-import {ErrorInterceptor} from './_helper/error.interceptor';
+//import {ErrorInterceptor} from './_helper/error.interceptor';
 import { NewLoginComponent } from './new-login/new-login.component';
 import { CasecadedropdownComponent } from './casecadedropdown/casecadedropdown.component';
+
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
   imports: [
@@ -38,7 +41,8 @@ import { CasecadedropdownComponent } from './casecadedropdown/casecadedropdown.c
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-
+    //Ng4LoadingSpinnerModule.forRoot(),
+    NgxSpinnerModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
@@ -60,7 +64,7 @@ import { CasecadedropdownComponent } from './casecadedropdown/casecadedropdown.c
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule    
   ],
   declarations: [
     AppComponent,
@@ -73,11 +77,12 @@ import { CasecadedropdownComponent } from './casecadedropdown/casecadedropdown.c
     TableExampleComponent,
     NavComponent,
     NewLoginComponent,
-    CasecadedropdownComponent    
+    CasecadedropdownComponent,
+    SidenavComponent    
   ],
   providers:[
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    //{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
 
   ],
 

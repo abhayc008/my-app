@@ -21,7 +21,7 @@
     <label class="control-label" for="States">States:</label>
     <select *ngIf="states" [(ngModel)]="selectedState" (change)="onSelectState($event.target.value)" class="form-control input-lg" id="state">
         <option value="0">Select State</option>
-      <option *ngFor="let state of states" value= {{state.ID}}>{{state.NAME}}</option>
+      <option *ngFor="let state of states" value= {{state.ID}}>{{state.NAME}}</option>      
     </select>
   </div>
  
